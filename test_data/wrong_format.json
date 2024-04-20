@@ -1,0 +1,22 @@
+{
+    "index": 0,
+    "guid": "b8a65d9c-877a-4054-98b3-6ac7bf1ac7ca",
+    "isActive": false,
+    "age": 39,
+    "eyeColor": "brown",
+    "registered": "2018-02-07T07:52:37 -01:00",
+    "friends": [
+      {
+        "id": 0,
+        "name": "Bryan Gaines"
+      },
+      {
+        "id": 1,
+        "name": "Deanna Wilkins"
+      },
+      {
+        "id": 2,
+        "name": "Althea Burks"
+      }
+    ]
+}
