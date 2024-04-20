@@ -4,6 +4,7 @@ class Parser():
     """
         Creates a JSON AWS::IAM:Role Policy parser
     """
+
     def check_single_asterisk(self, arg: str) -> bool:
         """
             Checks if the given argument is a singular asterisk.\n
@@ -11,6 +12,7 @@ class Parser():
             Returns True otherwise.
         """
         return False if arg == "*" else True
+    
     def load_file_path(self, path: str) -> dict:
         """
             Loads a JSON file from the given path.\n
@@ -27,12 +29,14 @@ class Parser():
         except:
             print("Not a JSON file")
             return
+        
     def verify_resource(self, json) -> bool:
         """
-            Input can be either a path to the JSON file as a string or a dictionary containing the JSON.\n
+            Input can be either a path to the JSON file as a string or a dictionary containing the JSON data.\n
             Verifies the contents of the \'Resoure\' field.\n
             Returns False if the field contains a singular asterisk, otherwise returns True.\n
-            Returns None if the JSON file appears to be of a different format than AWS:IAM:Role Policy.
+            Returns None if the JSON file appears to be of a different format than AWS:IAM:Role Policy,\n
+            or (if the input was a path) the input isn't a JSON file.
         """
         if type(json) == str:
             json = self.load_file_path(json)
