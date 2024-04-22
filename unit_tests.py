@@ -121,6 +121,21 @@ class VerifyResourceTests(unittest.TestCase):
 
         self.assertIsNone(result)
 
+    def test_data_valid(self):
+        parser = Parser()
+        data = {'PolicyName': 'root', 'PolicyDocument': {'Version': '2012-10-17', 'Statement': [{'Sid': 'IamListAccess', 'Effect': 'Allow', 'Action': ['iam:ListRoles', 'iam:ListUsers'], 'Resource': 'This is a valid resource'}]}}
+
+        result = parser.verify_resource(data)
+
+        self.assertTrue(result)
+
+    def test_data_not_valid(self):
+        parser = Parser()
+        data = {'PolicyName': 'root', 'PolicyDocument': {'Version': '2012-10-17', 'Statement': [{'Sid': 'IamListAccess', 'Effect': 'Allow', 'Action': ['iam:ListRoles', 'iam:ListUsers'], 'Resource': '*'}]}}
+
+        result = parser.verify_resource(data)
+
+        self.assertFalse(result)
 
 if __name__ == "__main__":
     unittest.main()
